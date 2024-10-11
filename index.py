@@ -5,6 +5,23 @@ import os
 import requests
 import pandas as pd
 
+
+def getPM():
+    # Let's calculate the average annual growth rate based on the provided profit data.
+    profits = [96773, 81462, 53823, 31536]
+    
+    # Number of years between the first and last data points
+    years = len(profits) - 1
+    
+    # Using the formula for average annual growth rate:
+    # (Final Value / Initial Value)^(1/years) - 1
+    average_growth_rate = ((profits[0] / profits[-1]) ** (1 / years)) - 1
+    
+    # Converting to percentage
+    average_growth_rate_percentage = average_growth_rate * 100
+    return average_growth_rate_percentage
+
+
 # Function to fetch data from Yahoo Finance
 def getDataYahoo(stonk):
     url = f"https://finance.yahoo.com/quote/{stonk}/"
